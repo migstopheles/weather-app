@@ -1,0 +1,36 @@
+.forecast--empty {
+	padding: 1em;
+	text-align: center;
+	font-size: 1.25rem;
+}
+
+.forecast__title {
+	padding: 0 1rem;
+	margin: 0 0 1rem;
+}
+
+.forecast__items {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.forecast__item {
+	flex-basis: 100%;
+	padding: 1rem;
+	cursor: pointer;
+}
+
+.forecast__item:hover {
+	background: #444;
+}
+
+.forecast__item:not(:first-child) {
+	border-top: 1px solid #555;
+}
+
+.forecast__item:not(:last-child) {
+	border-bottom: 1px solid #111;
+}

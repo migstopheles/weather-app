@@ -1,0 +1,30 @@
+.forecast-day {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.forecast-day__main,
+.forecast-day__info {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.forecast-day__main {
+	flex-basis: 66%;
+}
+
+.forecast-day__info {
+	font-size: 0.85rem;
+	text-align: right;
+	flex-basis: 33%;
+}
+
+.forecast-day__main-temp {
+	font-size: 2.5rem;
+}
+
+.forecast-day__description {
+	font-size: 1.25rem;
+}
