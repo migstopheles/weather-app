@@ -9,9 +9,8 @@ cache:
 install:
   - npm install
 script:
-  - npm test -- --coverage
-  - echo "$TRAVIS_EVENT_TYPE"
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run build; fi'
+  - 'if [ "$TRAVIS_EVENT_TYPE" = "push" ] && [ "$TRAVIS_BRANCH" = "master" ]; then npm test -- --coverage && npm run publish; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm test -- --coverage; fi'
 deploy: 
   provider: s3
   detect_encoding: true
