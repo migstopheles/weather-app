@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/api/apiFactory.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/api</a> apiFactory.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">42.11% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>8/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">41.18% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>7/17</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { create } from 'axios';
+&nbsp;
+import weatherApiFactory from './services/weather';
+&nbsp;
+const HttpMethods = {
+	GET: 'get',
+	POST: 'post'
+	// etc
+};
+&nbsp;
+const methodsFactory = (request) =&gt; ({
+	get: <span class="fstat-no" title="function not covered" >(u</span>rl, params, options) =&gt; <span class="cstat-no" title="statement not covered" >request({ url, params, method: HttpMethods.GET, ...options }),</span>
+	post: <span class="fstat-no" title="function not covered" >(u</span>rl, data, options) =&gt; <span class="cstat-no" title="statement not covered" >request({ url, data, method: HttpMethods.POST, ...options })</span>
+});
+&nbsp;
+export default function apiFactory(config) {
+	const { hostname, apiKey, type, units } = config;
+	const axiosInstance = create({
+		baseURL: hostname
+		// auth headers would go here
+	});
+&nbsp;
+	axiosInstance.interceptors.request.use(<span class="fstat-no" title="function not covered" >(r</span>equestConfig) =&gt; {
+<span class="cstat-no" title="statement not covered" >		if (!requestConfig.params) <span class="cstat-no" title="statement not covered" >requestConfig.params = {};</span></span>
+<span class="cstat-no" title="statement not covered" >		requestConfig.params['appid'] = apiKey;</span>
+<span class="cstat-no" title="statement not covered" >		requestConfig.params['units'] = units;</span>
+<span class="cstat-no" title="statement not covered" >		requestConfig.params['type'] = type;</span>
+<span class="cstat-no" title="statement not covered" >		return requestConfig;</span>
+	});
+&nbsp;
+	function <span class="fstat-no" title="function not covered" >request(</span>requestConfig) {
+<span class="cstat-no" title="statement not covered" >		return axiosInstance.request(requestConfig)</span>
+			.then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; <span class="cstat-no" title="statement not covered" >response.data)</span>
+			.catch(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
+<span class="cstat-no" title="statement not covered" >				console.error('API Request Failed: ', requestConfig, response);</span>
+				// global response error handling
+				// e.g. reauthentication on 401
+			});
+	}
+&nbsp;
+	const api = methodsFactory(request);
+&nbsp;
+	return {
+		Weather: weatherApiFactory(api)
+	};
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Aug 04 2017 09:36:11 GMT+0100 (BST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

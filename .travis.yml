@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "8"
+env:
+  - CI=true
+cache:
+  directories:
+    - "node_modules"
+install:
+  - npm install
+script:
+  - npm test -- --coverage
+  - echo "$TRAVIS_EVENT_TYPE"
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run build; fi'
+deploy: 
+  provider: s3
+  detect_encoding: true
+  cache_control: "max-age=31536000"
+  access_key_id: foo
+  secret_access_key: bar
+  bucket: s3_bucket_name
+  skip_cleanup: true
+  on:
+    branch: master
