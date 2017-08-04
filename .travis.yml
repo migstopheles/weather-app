@@ -4,13 +4,13 @@ node_js:
 env:
   - CI=true
 cache:
-  directories:
     - "node_modules"
+  directories:
 install:
   - npm install
 script:
+  - echo "$TRAVIS_EVENT_TYPE"
   - npm test -- --coverage
-  - echo $TRAVIS_EVENT_TYPE
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run build; fi'
 deploy: 
   provider: s3
