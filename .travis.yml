@@ -6,12 +6,15 @@ env:
 cache:
   directories:
     - "node_modules"
+before_install:
+  - 'if [ "$TRAVIS_EVENT_TYPE" = "push" ] && [ "$TRAVIS_BRANCH" = "master" ]; then TRAVELNEST_PUBLISH="true"; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then TRAVELNEST_TESTRUN="true"; fi'
+  - 'if [ "$TRAVELNEST_PUBLISH" = "true" ] || [ $TRAVELNEST_TESTRUN = "true" ]; then TRAVELNEST_INSTALL="true"; fi'
 install:
-  - npm install
+  - 'if [ "$TRAVELNEST_INSTALL" = "true" ]; then npm install; fi'
 script:
-  - npm test -- --coverage
-  - echo "$TRAVIS_EVENT_TYPE"
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run build; fi'
+  - 'if [ "$TRAVELNEST_TESTRUN" = "true" ]; then npm test -- --coverage; fi'
+  - 'if [ "$TRAVELNEST_PUBLISH" = "true" ]; then npm test -- --coverage && npm run publish; fi'
 deploy: 
   provider: s3
   detect_encoding: true
